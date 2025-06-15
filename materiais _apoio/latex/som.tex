@@ -1,0 +1,18 @@
+#Ajuste dos pesos (BMU)
+\( w_i = w_i + ( (x_i - w_i) \cdot \eta) \) \\
+#Distancia Euclidiana (entrada para o BMU)
+\( d_j = \sqrt{\sum (x_{i} - w_{i})^2} \)
+#Escolha do BMU
+\( BMU = max(d) \)
+#Distancia Euclidiana (neuronio para o BMU)
+\( r = \sqrt{(bmu^{linha} - w^{linha})^2 + (bmu^{coluna} - w^{coluna})^2} \)
+#Ajuste dos pesos (Vizinhança)
+\( w_i = w_i + ( \theta(bmu,w) \cdot (x_i - w_i) \cdot \eta) \) 
+#Raio de Vizinhança
+\( \sigma_k = max(linhas,colunas) * \exp [-\frac{k}{\frac{T}{2}}] \)
+#Fator de Vizinhança
+\( \theta(bmu,w) = \exp [-\frac{r}{2\sigma^2}]\)
+#Taxa de Aprendizado
+\( \eta_k = 0.1 \) #constante
+\( \eta_k = \eta_0 - (1 - \frac{k}{T}) \) #linear
+\( \eta_k = \eta_0 \cdot \exp [-\frac{k}{\frac{T}{2}}] \)# não-linear
