@@ -4,7 +4,7 @@ Nesta aula, você verá:
 
 1. **Limitações do Aprendizado Supervisionado**  
 2. **Modelagem das entradas e atributos**  
-3. **Modelagem de uma Rede de Kohonen:**   
+3. **Modelagem de uma Rede de Kohonen**   
 4. **Similaridades, BMU e vizinhança**  
 
 ---
