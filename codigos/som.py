@@ -1,6 +1,8 @@
 from neuronio import Neuronio
 import math
 import logging
+import matplotlib.pyplot as plt
+import numpy as np
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(format='%(message)s',level=logging.INFO)
@@ -93,3 +95,33 @@ class SOM:
                     bmu = self.network[l][c]
         bmu.entradas.append(entrada)
         return bmu 
+    
+    def plotar(self, entradas):
+        labels_neuronios = []
+        x_vals_neuronios = []
+        y_vals_neuronios = []
+        x_vals_entradas = []
+        y_vals_entradas = []
+        
+        for linha in self.network:
+            for neuronio in linha:
+                labels_neuronios.append (f'{neuronio.linha,neuronio.coluna} - [{len(neuronio.entradas)}]')
+                x_vals_neuronios.append (neuronio.w[0])
+                y_vals_neuronios.append (neuronio.w[1])
+
+        for entrada in entradas:
+            x_vals_entradas.append (entrada.x[0])
+            y_vals_entradas.append (entrada.x[1])
+
+        x_vals_neuronios = np.array(x_vals_neuronios)
+        y_vals_neuronios = np.array(y_vals_neuronios)
+        x_vals_entradas = np.array(x_vals_entradas)
+        y_vals_entradas = np.array(y_vals_entradas)
+
+        plt.scatter(x_vals_entradas, y_vals_entradas, color='red', label='Entradas')
+        plt.scatter(x_vals_neuronios, y_vals_neuronios)
+
+        for i, label in enumerate(labels_neuronios):
+            plt.text(x_vals_neuronios[i], y_vals_neuronios[i], label, color='darkblue', ha='right')
+
+        plt.show()
