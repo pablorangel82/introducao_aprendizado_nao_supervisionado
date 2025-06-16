@@ -105,7 +105,7 @@ class SOM:
         
         for linha in self.network:
             for neuronio in linha:
-                labels_neuronios.append (f'{neuronio.linha,neuronio.coluna} - [{len(neuronio.entradas)}]')
+                labels_neuronios.append (f'{neuronio.linha,neuronio.coluna}[{len(neuronio.entradas)}]')
                 x_vals_neuronios.append (neuronio.w[0])
                 y_vals_neuronios.append (neuronio.w[1])
 
@@ -119,9 +119,13 @@ class SOM:
         y_vals_entradas = np.array(y_vals_entradas)
 
         plt.scatter(x_vals_entradas, y_vals_entradas, color='red', label='Entradas')
-        plt.scatter(x_vals_neuronios, y_vals_neuronios)
+        plt.scatter(x_vals_neuronios, y_vals_neuronios,label='Neurônios')
 
         for i, label in enumerate(labels_neuronios):
             plt.text(x_vals_neuronios[i], y_vals_neuronios[i], label, color='darkblue', ha='right')
 
+        plt.legend()
+        plt.xlabel('Atributo 1')
+        plt.ylabel('Atributo 2')
+        plt.title('Agrupamento pelo SOM')
         plt.show()
